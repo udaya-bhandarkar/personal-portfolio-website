@@ -278,7 +278,7 @@ export function Hero() {
             </p>
 
             <div className="flex gap-3 sm:gap-4 justify-center md:justify-start flex-wrap">
-              <a href="/resume.pdf" download="Udaya_Bhandarkar_Resume.pdf">
+              <a href="/Udaya_Bhandarkar_Resume.pdf" download="Udaya_Bhandarkar_Resume.pdf">
                 <Button className="liquid-button bg-blue-600 rounded-full px-4 sm:px-6 cursor-pointer text-sm sm:text-base">Download CV</Button>
               </a>
               <Button
