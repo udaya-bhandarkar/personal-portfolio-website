@@ -3,7 +3,7 @@ import { Button } from "./ui/button";
 import avatarImage from 'figma:asset/fe7a74385176214b31a1195f06afaa8ec88ed6ce.png';
 import { motion, useScroll, useTransform, useMotionValue, useSpring } from 'motion/react';
 import { useState, useRef, useEffect } from 'react';
-import { toast } from "sonner@2.0.3";
+import { toast } from "sonner";
 
 export function Hero() {
   const [hoveredIcon, setHoveredIcon] = useState<number | null>(null);
