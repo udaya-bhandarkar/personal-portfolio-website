@@ -1,12 +1,12 @@
+
 import { Github, Linkedin, Mail } from "lucide-react";
 import { Button } from "./ui/button";
 import avatarImage from 'figma:asset/fe7a74385176214b31a1195f06afaa8ec88ed6ce.png';
-import { motion, useScroll, useTransform, useMotionValue, useSpring } from 'motion/react';
-import { useState, useRef, useEffect } from 'react';
+import { motion, useScroll, useTransform } from 'motion/react';
+import { useRef } from 'react';
 import { toast } from "sonner";
 
 export function Hero() {
-  const [hoveredIcon, setHoveredIcon] = useState<number | null>(null);
   const heroRef = useRef<HTMLDivElement>(null);
 
   const handleEmailClick = (e: React.MouseEvent) => {
@@ -18,28 +18,6 @@ export function Hero() {
       toast.error("Failed to copy email");
     });
   };
-
-  // Mouse position tracking for parallax
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
-
-  const smoothMouseX = useSpring(mouseX, { stiffness: 50, damping: 20 });
-  const smoothMouseY = useSpring(mouseY, { stiffness: 50, damping: 20 });
-
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      if (heroRef.current) {
-        const rect = heroRef.current.getBoundingClientRect();
-        const centerX = rect.left + rect.width / 2;
-        const centerY = rect.top + rect.height / 2;
-        mouseX.set((e.clientX - centerX) / 30);
-        mouseY.set((e.clientY - centerY) / 30);
-      }
-    };
-
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, [mouseX, mouseY]);
 
   // Parallax scroll effect
   const { scrollYProgress } = useScroll({
@@ -184,72 +162,72 @@ export function Hero() {
   return (
     <section id="home" ref={heroRef} className="min-h-screen flex items-center justify-center relative overflow-hidden px-4 sm:px-6 pt-8 sm:pt-20 pb-8 sm:pb-0">
       <style>{`
-        .liquid-button {
-          position: relative;
-          overflow: hidden;
-          z-index: 0;
-          transition: 
-            opacity 0.2s cubic-bezier(0.2, 0, 0.1, 1),
-            transform 0.2s cubic-bezier(0.2, 0, 0.1, 1),
-            box-shadow 0.4s ease,
-            color 0.4s ease,
-            background 0.4s ease;
-          will-change: box-shadow, color, transform, opacity, background;
-        }
+  .liquid - button {
+  position: relative;
+  overflow: hidden;
+  z - index: 0;
+  transition: 
+            opacity 0.2s cubic - bezier(0.2, 0, 0.1, 1),
+    transform 0.2s cubic - bezier(0.2, 0, 0.1, 1),
+      box - shadow 0.4s ease,
+        color 0.4s ease,
+          background 0.4s ease;
+  will - change: box - shadow, color, transform, opacity, background;
+}
         
-        .liquid-button::before,
-        .liquid-button::after {
-          content: '';
-          position: absolute;
-          z-index: -1;
-          pointer-events: none;
-          top: 0;
-          right: -50%;
-          left: -50%;
-          height: 0;
-          padding-bottom: 200%;
-          border-radius: 39%;
-          transition: transform 0s cubic-bezier(0.2, 0, 0.1, 1) 0.4s, opacity 0.4s cubic-bezier(0.2, 0, 0.1, 1);
-          opacity: 0;
-        }
+        .liquid - button:: before,
+        .liquid - button::after {
+  content: '';
+  position: absolute;
+  z - index: -1;
+  pointer - events: none;
+  top: 0;
+  right: -50 %;
+  left: -50 %;
+  height: 0;
+  padding - bottom: 200 %;
+  border - radius: 39 %;
+  transition: transform 0s cubic - bezier(0.2, 0, 0.1, 1) 0.4s, opacity 0.4s cubic - bezier(0.2, 0, 0.1, 1);
+  opacity: 0;
+}
         
-        .liquid-button::before {
-          transform: translate3d(-10%, 4.8em, 0) rotate(330deg);
-          background: linear-gradient(25deg, #60a5fa, rgba(96, 165, 250, 0));
-        }
+        .liquid - button::before {
+  transform: translate3d(-10 %, 4.8em, 0) rotate(330deg);
+  background: linear - gradient(25deg, #60a5fa, rgba(96, 165, 250, 0));
+}
         
-        .liquid-button::after {
-          transform: translate3d(10%, 4.8em, 0) rotate(0deg);
-          background: linear-gradient(70deg, rgba(59, 130, 246, 0.5), rgba(37, 99, 235, 0));
-        }
+        .liquid - button::after {
+  transform: translate3d(10 %, 4.8em, 0) rotate(0deg);
+  background: linear - gradient(70deg, rgba(59, 130, 246, 0.5), rgba(37, 99, 235, 0));
+}
         
-        .liquid-button:hover::before,
-        .liquid-button:hover::after {
-          transition: transform 1.5s ease 0s, opacity 0.2s ease;
-          opacity: 1;
-        }
+        .liquid - button: hover:: before,
+        .liquid - button: hover::after {
+  transition: transform 1.5s ease 0s, opacity 0.2s ease;
+  opacity: 1;
+}
         
-        .liquid-button:hover::before {
-          transform: translate3d(-10%, -1em, 0) rotate(100deg);
-        }
+        .liquid - button: hover::before {
+  transform: translate3d(-10 %, -1em, 0) rotate(100deg);
+}
         
-        .liquid-button:hover::after {
-          transform: translate3d(10%, -1em, 0) rotate(180deg);
-        }
+        .liquid - button: hover::after {
+  transform: translate3d(10 %, -1em, 0) rotate(180deg);
+}
         
-        .liquid-button:hover {
-          transition:
-            opacity 0.2s cubic-bezier(0.2, 0, 0.1, 1),
-            transform 0.2s cubic-bezier(0.2, 0, 0.1, 1),
-            box-shadow 1.2s ease,
-            color 1s ease,
-            background 0.6s ease 0.4s;
-          background: #3b82f6;
-          box-shadow: 
+        .liquid - button:hover {
+  transition:
+            opacity 0.2s cubic - bezier(0.2, 0, 0.1, 1),
+    transform 0.2s cubic - bezier(0.2, 0, 0.1, 1),
+      box - shadow 1.2s ease,
+        color 1s ease,
+          background 0.6s ease 0.4s;
+  background: #3b82f6;
+  box - shadow: 
             inset 0 0 0 0.1em #2563eb,
-            0 0 1.75em rgba(59, 130, 246, 0.5);
-        }
-      `}</style>
+    0 0 1.75em rgba(59, 130, 246, 0.5);
+}
+`}</style>
       {/* Animated background elements */}
       <div className="absolute top-20 left-10 w-32 h-32 bg-blue-500/20 rounded-full blur-3xl animate-pulse"></div>
       <div className="absolute bottom-20 right-10 w-40 h-40 bg-cyan-500/20 rounded-full blur-3xl animate-pulse delay-700"></div>
@@ -388,8 +366,7 @@ export function Hero() {
                           scale: 1.12,
                           transition: { type: "spring", stiffness: 300, damping: 15 }
                         }}
-                        onMouseEnter={() => setHoveredIcon(icon.id)}
-                        onMouseLeave={() => setHoveredIcon(null)}
+
                       >
 
                         {/* Icon container with breathing, rotation, and depth */}
@@ -498,8 +475,7 @@ export function Hero() {
                         scale: 1.12,
                         transition: { type: "spring", stiffness: 300, damping: 15 }
                       }}
-                      onMouseEnter={() => setHoveredIcon(icon.id)}
-                      onMouseLeave={() => setHoveredIcon(null)}
+
                     >
 
                       {/* Icon container with breathing, rotation, and depth */}
