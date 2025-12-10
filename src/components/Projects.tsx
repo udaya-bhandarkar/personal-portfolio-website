@@ -14,14 +14,16 @@ export function Projects() {
       category: "Product Design",
       description: "High-fidelity mobile debt management app featuring Visa-Sync Dynamic Personalization and Safe-to-Spend calculations",
       image: "https://images.unsplash.com/photo-1748609160056-7b95f30041f0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxkYXRhJTIwZGFzaGJvYXJkJTIwYW5hbHl0aWNzfGVufDF8fHx8MTc2MzU4Nzk3OHww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-      tags: ["Figma", "React", "MongoDB"]
+      tags: ["Figma", "React", "MongoDB"],
+      githubUrl: "https://github.com/udaya-bhandarkar/debtfree"
     },
     {
       title: "Tesla Financial Analysis",
       category: "Data Analysis",
       description: "Time-series analysis of Tesla's SEC 10-K filings (2018-2020) assessing financial health and operational efficiency",
       image: teslaImage,
-      tags: ["Excel", "Data Analysis", "Tableau"]
+      tags: ["Excel", "Data Analysis", "Tableau"],
+      githubUrl: "https://github.com/udaya-bhandarkar/financial_analysis"
     }
   ];
 
@@ -72,7 +74,7 @@ export function Projects() {
                     size="sm" 
                     variant="outline" 
                     className="border-blue-500/30 text-blue-400 hover:bg-blue-500/10 hover:text-white text-xs sm:text-sm"
-                    onClick={() => setShowComingSoon(true)}
+                    onClick={() => project.githubUrl ? window.open(project.githubUrl, '_blank') : setShowComingSoon(true)}
                   >
                     <Github className="w-3 h-3 sm:w-4 sm:h-4 mr-1" />
                     Code
