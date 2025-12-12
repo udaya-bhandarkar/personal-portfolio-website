@@ -22,7 +22,7 @@ export function Projects() {
       category: "Data Analysis",
       description: "Time-series analysis of Tesla's SEC 10-K filings (2018-2020) assessing financial health and operational efficiency",
       image: teslaImage,
-      tags: ["Excel", "Data Analysis", "Tableau"],
+      tags: ["Excel", "Python", "React", "Tableau"],
       githubUrl: "https://github.com/udaya-bhandarkar/financial_analysis",
       link: "https://tesla-financial-analysis.vercel.app/"
     }
