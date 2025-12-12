@@ -23,7 +23,8 @@ export function Projects() {
       description: "Time-series analysis of Tesla's SEC 10-K filings (2018-2020) assessing financial health and operational efficiency",
       image: teslaImage,
       tags: ["Excel", "Data Analysis", "Tableau"],
-      githubUrl: "https://github.com/udaya-bhandarkar/financial_analysis"
+      githubUrl: "https://github.com/udaya-bhandarkar/financial_analysis",
+      link: "https://tesla-financial-analysis.vercel.app/"
     }
   ];
 
@@ -34,22 +35,22 @@ export function Projects() {
           <h2 className="text-3xl sm:text-4xl text-white mb-3 sm:mb-4">My Projects</h2>
           <p className="text-gray-400 text-sm sm:text-base">Recent work that I'm proud of</p>
         </div>
-        
+
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-6 sm:mb-8">
           {projects.map((project, index) => (
-            <div 
+            <div
               key={index}
               className="group bg-blue-950/30 backdrop-blur-sm rounded-xl overflow-hidden border border-blue-500/20 hover:border-blue-500/40 transition-all hover:transform hover:scale-105 flex flex-col"
             >
               <div className="relative h-40 sm:h-48 overflow-hidden">
-                <img 
-                  src={project.image} 
+                <img
+                  src={project.image}
                   alt={project.title}
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-blue-950 via-blue-950/50 to-transparent opacity-60"></div>
               </div>
-              
+
               <div className="p-5 sm:p-6 space-y-2 sm:space-y-3 flex flex-col flex-1">
                 <div className="flex gap-2 flex-wrap">
                   {project.tags.map((tag, i) => (
@@ -60,19 +61,19 @@ export function Projects() {
                 </div>
                 <h3 className="text-lg sm:text-xl text-white">{project.title}</h3>
                 <p className="text-gray-400 text-xs sm:text-sm flex-1">{project.description}</p>
-                
+
                 <div className="flex gap-2 pt-2">
-                  <Button 
-                    size="sm" 
+                  <Button
+                    size="sm"
                     className="bg-blue-600 hover:bg-blue-700 text-xs sm:text-sm"
-                    onClick={() => setShowComingSoon(true)}
+                    onClick={() => (project as any).link ? window.open((project as any).link, '_blank') : setShowComingSoon(true)}
                   >
                     <ExternalLink className="w-3 h-3 sm:w-4 sm:h-4 mr-1" />
                     View
                   </Button>
-                  <Button 
-                    size="sm" 
-                    variant="outline" 
+                  <Button
+                    size="sm"
+                    variant="outline"
                     className="border-blue-500/30 text-blue-400 hover:bg-blue-500/10 hover:text-white text-xs sm:text-sm"
                     onClick={() => project.githubUrl ? window.open(project.githubUrl, '_blank') : setShowComingSoon(true)}
                   >
