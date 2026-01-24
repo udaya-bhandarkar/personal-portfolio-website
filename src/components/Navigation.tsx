@@ -1,9 +1,9 @@
-import { Button } from "./ui/button";
+
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 
 export function Navigation() {
-  const navItems = ["Home", "Services", "Testimonials", "Contact Us"];
+  const navItems = ["Home", "Skills", "Projects", "Contact Us"];
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
@@ -22,7 +22,7 @@ export function Navigation() {
       const navHeight = 100; // Height buffer to prevent overlap
       const elementPosition = section.getBoundingClientRect().top;
       const offsetPosition = elementPosition + window.pageYOffset - navHeight;
-      
+
       window.scrollTo({
         top: offsetPosition,
         behavior: 'smooth'
@@ -45,13 +45,12 @@ export function Navigation() {
           color: #3b82f6;
         }
       `}</style>
-      
-      <motion.div 
-        className={`transition-all duration-300 rounded-full ${
-          isScrolled 
-            ? 'bg-slate-900/80 backdrop-blur-md border-b border-blue-500/30 shadow-lg shadow-blue-500/10' 
-            : 'bg-transparent'
-        }`}
+
+      <motion.div
+        className={`transition-all duration-300 rounded-full ${isScrolled
+          ? 'bg-slate-900/80 backdrop-blur-md border-b border-blue-500/30 shadow-lg shadow-blue-500/10'
+          : 'bg-transparent'
+          }`}
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.5 }}

@@ -2,12 +2,11 @@ import { Hero } from "./components/Hero";
 import { About } from "./components/About";
 import { Skills } from "./components/Skills";
 import { Certifications } from "./components/Certifications";
-import { Services } from "./components/Services";
+
 import { Projects } from "./components/Projects";
-import { Testimonials } from "./components/Testimonials";
 import { Contact } from "./components/Contact";
 import { Navigation } from "./components/Navigation";
-import { Toaster } from "sonner@2.0.3";
+import { Toaster } from "sonner";
 
 export default function App() {
   return (
@@ -17,9 +16,7 @@ export default function App() {
       <About />
       <Skills />
       <Certifications />
-      <Services />
       <Projects />
-      <Testimonials />
       <Contact />
       <Toaster position="bottom-center" richColors />
     </div>
