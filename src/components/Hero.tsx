@@ -162,72 +162,72 @@ export function Hero() {
   return (
     <section id="home" ref={heroRef} className="min-h-screen flex items-center justify-center relative overflow-hidden px-4 sm:px-6 pt-8 sm:pt-20 pb-8 sm:pb-0">
       <style>{`
-  .liquid - button {
-  position: relative;
-  overflow: hidden;
-  z - index: 0;
-  transition: 
-            opacity 0.2s cubic - bezier(0.2, 0, 0.1, 1),
-    transform 0.2s cubic - bezier(0.2, 0, 0.1, 1),
-      box - shadow 0.4s ease,
-        color 0.4s ease,
-          background 0.4s ease;
-  will - change: box - shadow, color, transform, opacity, background;
-}
+        .liquid-button {
+          position: relative;
+          overflow: hidden;
+          z-index: 0;
+          transition: 
+            opacity 0.2s cubic-bezier(0.2, 0, 0.1, 1),
+            transform 0.2s cubic-bezier(0.2, 0, 0.1, 1),
+            box-shadow 0.4s ease,
+            color 0.4s ease,
+            background 0.4s ease;
+          will-change: box-shadow, color, transform, opacity, background;
+        }
         
-        .liquid - button:: before,
-        .liquid - button::after {
-  content: '';
-  position: absolute;
-  z - index: -1;
-  pointer - events: none;
-  top: 0;
-  right: -50 %;
-  left: -50 %;
-  height: 0;
-  padding - bottom: 200 %;
-  border - radius: 39 %;
-  transition: transform 0s cubic - bezier(0.2, 0, 0.1, 1) 0.4s, opacity 0.4s cubic - bezier(0.2, 0, 0.1, 1);
-  opacity: 0;
-}
+        .liquid-button::before,
+        .liquid-button::after {
+          content: '';
+          position: absolute;
+          z-index: -1;
+          pointer-events: none;
+          top: 0;
+          right: -50%;
+          left: -50%;
+          height: 0;
+          padding-bottom: 200%;
+          border-radius: 39%;
+          transition: transform 0s cubic-bezier(0.2, 0, 0.1, 1) 0.4s, opacity 0.4s cubic-bezier(0.2, 0, 0.1, 1);
+          opacity: 0;
+        }
         
-        .liquid - button::before {
-  transform: translate3d(-10 %, 4.8em, 0) rotate(330deg);
-  background: linear - gradient(25deg, #60a5fa, rgba(96, 165, 250, 0));
-}
+        .liquid-button::before {
+          transform: translate3d(-10%, 4.8em, 0) rotate(330deg);
+          background: linear-gradient(25deg, #60a5fa, rgba(96, 165, 250, 0));
+        }
         
-        .liquid - button::after {
-  transform: translate3d(10 %, 4.8em, 0) rotate(0deg);
-  background: linear - gradient(70deg, rgba(59, 130, 246, 0.5), rgba(37, 99, 235, 0));
-}
+        .liquid-button::after {
+          transform: translate3d(10%, 4.8em, 0) rotate(0deg);
+          background: linear-gradient(70deg, rgba(59, 130, 246, 0.5), rgba(37, 99, 235, 0));
+        }
         
-        .liquid - button: hover:: before,
-        .liquid - button: hover::after {
-  transition: transform 1.5s ease 0s, opacity 0.2s ease;
-  opacity: 1;
-}
+        .liquid-button:hover::before,
+        .liquid-button:hover::after {
+          transition: transform 1.5s ease 0s, opacity 0.2s ease;
+          opacity: 1;
+        }
         
-        .liquid - button: hover::before {
-  transform: translate3d(-10 %, -1em, 0) rotate(100deg);
-}
+        .liquid-button:hover::before {
+          transform: translate3d(-10%, -1em, 0) rotate(100deg);
+        }
         
-        .liquid - button: hover::after {
-  transform: translate3d(10 %, -1em, 0) rotate(180deg);
-}
+        .liquid-button:hover::after {
+          transform: translate3d(10%, -1em, 0) rotate(180deg);
+        }
         
-        .liquid - button:hover {
-  transition:
-            opacity 0.2s cubic - bezier(0.2, 0, 0.1, 1),
-    transform 0.2s cubic - bezier(0.2, 0, 0.1, 1),
-      box - shadow 1.2s ease,
-        color 1s ease,
-          background 0.6s ease 0.4s;
-  background: #3b82f6;
-  box - shadow: 
+        .liquid-button:hover {
+          transition:
+            opacity 0.2s cubic-bezier(0.2, 0, 0.1, 1),
+            transform 0.2s cubic-bezier(0.2, 0, 0.1, 1),
+            box-shadow 1.2s ease,
+            color 1s ease,
+            background 0.6s ease 0.4s;
+          background: #3b82f6;
+          box-shadow: 
             inset 0 0 0 0.1em #2563eb,
-    0 0 1.75em rgba(59, 130, 246, 0.5);
-}
-`}</style>
+            0 0 1.75em rgba(59, 130, 246, 0.5);
+        }
+      `}</style>
       {/* Animated background elements */}
       <div className="absolute top-20 left-10 w-32 h-32 bg-blue-500/20 rounded-full blur-3xl animate-pulse"></div>
       <div className="absolute bottom-20 right-10 w-40 h-40 bg-cyan-500/20 rounded-full blur-3xl animate-pulse delay-700"></div>
@@ -259,18 +259,7 @@ export function Hero() {
               <a href="/Udaya_Bhandarkar_Resume.pdf" download="Udaya_Bhandarkar_Resume.pdf">
                 <Button className="liquid-button bg-blue-600 rounded-full px-4 sm:px-6 cursor-pointer text-sm sm:text-base">Download CV</Button>
               </a>
-              <Button
-                variant="outline"
-                className="liquid-button border-blue-600 text-white hover:text-white hover:border-blue-500 rounded-full px-4 sm:px-6 bg-transparent cursor-pointer text-sm sm:text-base"
-                onClick={() => {
-                  const projectsSection = document.getElementById('projects');
-                  if (projectsSection) {
-                    projectsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                  }
-                }}
-              >
-                My Projects
-              </Button>
+
             </div>
 
             <div className="flex gap-3 sm:gap-4 pt-2 sm:pt-4 justify-center md:justify-start">
