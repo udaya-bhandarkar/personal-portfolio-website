@@ -36,9 +36,6 @@ export function About() {
                 I've also tried Product Management, where leading an 8-member team taught me that "a small change" is never small.
               </p>
               <p className="text-gray-300 leading-relaxed mt-3 sm:mt-4 text-sm sm:text-base">
-                I like building things, like DebtFree, a smart money buddy for international students.
-              </p>
-              <p className="text-gray-300 leading-relaxed mt-3 sm:mt-4 text-sm sm:text-base">
                 I'm currently pursuing my MSc in Business Analytics at Warwick Business School, balancing data, deadlines, and far too much coffee.
               </p>
             </div>
