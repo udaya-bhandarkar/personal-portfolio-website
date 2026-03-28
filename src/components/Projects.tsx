@@ -2,7 +2,7 @@ import { ExternalLink, Github } from "lucide-react";
 import { Button } from "./ui/button";
 import teslaImage from 'figma:asset/5e888e59e48978fbc59a8cc41ea7ed06b23bf1b3.png';
 import { useState } from "react";
-import { SiDatabricks, SiApachespark, SiNeo4J } from "react-icons/si";
+import { SiDatabricks, SiApachespark, SiNeo4J, SiPython } from "react-icons/si";
 import { FaFileExcel } from "react-icons/fa6";
 import { VscAzure } from "react-icons/vsc";
 import { TbChartDots3 } from "react-icons/tb";
@@ -22,8 +22,9 @@ import { AnimatePresence } from "motion/react";
 
 /* ── Skill → icon + brand colour ── */
 const skillIcons: Record<string, { icon: React.ComponentType<{ size?: number; color?: string; className?: string }>; color: string }> = {
-  "Excel":          { icon: FaFileExcel,   color: "#217346" },
-  "Data Analysis":  { icon: TbChartDots3,  color: "#60a5fa" },
+  "Excel":            { icon: FaFileExcel,   color: "#217346" },
+  "Python":           { icon: SiPython,      color: "#3776AB" },
+  "Data Analysis":    { icon: TbChartDots3,  color: "#60a5fa" },
   "Tableau":        { icon: TableauIcon,   color: "#E97627" },
   "Azure":          { icon: VscAzure,      color: "#0078D4" },
   "Databricks":     { icon: SiDatabricks,  color: "#FF3621" },
@@ -40,7 +41,7 @@ export function Projects() {
       category: "Data Analysis",
       description: "Time-series analysis of Tesla's SEC 10-K filings (2018-2020) assessing financial health and operational efficiency",
       image: teslaImage,
-      tags: ["Excel", "Data Analysis", "Tableau"],
+      tags: ["Excel", "Python", "Tableau"],
       githubUrl: "https://github.com/udaya-bhandarkar/financial_analysis",
       link: "https://tesla-financial-analysis.vercel.app/"
     },
