@@ -2,21 +2,39 @@ import { ExternalLink, Github } from "lucide-react";
 import { Button } from "./ui/button";
 import teslaImage from 'figma:asset/5e888e59e48978fbc59a8cc41ea7ed06b23bf1b3.png';
 import { useState } from "react";
+import { SiDatabricks, SiApachespark, SiNeo4J } from "react-icons/si";
+import { FaFileExcel } from "react-icons/fa6";
+import { VscAzure } from "react-icons/vsc";
+import { TbChartDots3 } from "react-icons/tb";
+
+/* ── Inline Tableau logo (not in react-icons v5) ── */
+function TableauIcon({ size = 18, color = "#E97627", className }: { size?: number; color?: string; className?: string }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill={color} className={className}>
+      <path d="M11.654.174V2.377H9.682v.58h1.972V5.16h.696V2.957h1.97v-.58h-1.97V.174h-.696zm6.03 2.262l-.002 1.623-1.53-.027v.534l1.53-.004v1.627h.59V4.566l1.53.004v-.534l-1.53.027V2.436h-.59zM4.986 2.436v1.623l-1.53-.027v.534l1.53-.004v1.627h.588V4.566l1.53.004v-.534l-1.53.027V2.436h-.588zm11.76 4.074v2.563H14.15v.835h2.595v2.565h.843V9.908h2.597v-.835h-2.597V6.51h-.843zM.91 6.627v2.563H-1.686v.835H.91v2.565h.842V10.025H4.35v-.835H1.752V6.627H.91zm11.653-.117v3.283H9.682v1.06h2.881v3.286h1.078V10.853h2.882v-1.06H13.64V6.51h-1.078zm-6.03 2.262v1.623l-1.53-.027v.534l1.53-.004v1.627h.588v-1.623l1.53.004v-.534l-1.53.027V8.772h-.588zm16.136-.003v1.623l-1.53-.027v.534l1.53-.004V12.522h.588v-1.623l1.53.004v-.534l-1.53.027V8.769h-.588zm-8.067 5.108v2.563h-2.596v.835h2.596v2.565h.843v-2.565h2.596v-.835h-2.596v-2.563h-.843zm-6.03 2.262v1.623l-1.53-.027v.534l1.53-.004v1.627h.588v-1.623l1.53.004v-.534l-1.53.027v-1.627h-.588zm12.06 0v1.623l-1.53-.027v.534l1.53-.004v1.627h.59v-1.623l1.53.004v-.534l-1.53.027v-1.627h-.59zm-6.032 4.33v2.2H12.35v.58h1.972v2.2h.696v-2.2h1.97v-.58h-1.97v-2.2h-.696z" />
+    </svg>
+  );
+}
+
+import tflImage from '../assets/tfl_image.png';
 import { ComingSoon } from "./ComingSoon";
 import { AnimatePresence } from "motion/react";
+
+/* ── Skill → icon + brand colour ── */
+const skillIcons: Record<string, { icon: React.ComponentType<{ size?: number; color?: string; className?: string }>; color: string }> = {
+  "Excel":          { icon: FaFileExcel,   color: "#217346" },
+  "Data Analysis":  { icon: TbChartDots3,  color: "#60a5fa" },
+  "Tableau":        { icon: TableauIcon,   color: "#E97627" },
+  "Azure":          { icon: VscAzure,      color: "#0078D4" },
+  "Databricks":     { icon: SiDatabricks,  color: "#FF3621" },
+  "PySpark":        { icon: SiApachespark, color: "#E25A1C" },
+  "Neo4j":          { icon: SiNeo4J,       color: "#008CC1" },
+};
 
 export function Projects() {
   const [showComingSoon, setShowComingSoon] = useState(false);
 
   const projects = [
-    {
-      title: "DebtFree - Finance App",
-      category: "Product Design",
-      description: "High-fidelity mobile debt management app featuring Visa-Sync Dynamic Personalization and Safe-to-Spend calculations",
-      image: "https://images.unsplash.com/photo-1748609160056-7b95f30041f0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxkYXRhJTIwZGFzaGJvYXJkJTIwYW5hbHl0aWNzfGVufDF8fHx8MTc2MzU4Nzk3OHww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-      tags: ["Figma", "React", "MongoDB"],
-      githubUrl: "https://github.com/udaya-bhandarkar/debtfree"
-    },
     {
       title: "Tesla Financial Analysis",
       category: "Data Analysis",
@@ -25,6 +43,15 @@ export function Projects() {
       tags: ["Excel", "Data Analysis", "Tableau"],
       githubUrl: "https://github.com/udaya-bhandarkar/financial_analysis",
       link: "https://tesla-financial-analysis.vercel.app/"
+    },
+    {
+      title: "Event-Driven Transit Routing Tool for London Tube",
+      category: "Data Engineering",
+      description:
+        "Cloud-native streaming pipeline processing live Transport for London (TfL) API telemetry to detect network disruptions and predict localized bottlenecks.",
+      image: tflImage,
+      tags: ["Azure", "Databricks", "PySpark", "Neo4j"],
+      githubUrl: "https://github.com/udaya-bhandarkar/tfl-transit-balancer"
     }
   ];
 
@@ -52,13 +79,27 @@ export function Projects() {
               </div>
 
               <div className="p-5 sm:p-6 space-y-2 sm:space-y-3 flex flex-col flex-1">
-                <div className="flex gap-2 flex-wrap">
-                  {project.tags.map((tag, i) => (
-                    <span key={i} className="text-xs px-2 py-1 rounded-full bg-blue-600/20 text-blue-400 border border-blue-500/30">
-                      {tag}
-                    </span>
-                  ))}
+                {/* Skill logos */}
+                <div className="flex gap-3 flex-wrap items-center">
+                  {project.tags.map((tag) => {
+                    const skill = skillIcons[tag];
+                    if (!skill) return null;
+                    const Icon = skill.icon;
+                    return (
+                      <div
+                        key={tag}
+                        className="skill-icon-wrapper"
+                        title={tag}
+                      >
+                        <Icon size={18} color={skill.color} className="drop-shadow-sm" />
+                        <span className="skill-icon-tooltip">
+                          {tag}
+                        </span>
+                      </div>
+                    );
+                  })}
                 </div>
+
                 <h3 className="text-lg sm:text-xl text-white">{project.title}</h3>
                 <p className="text-gray-400 text-xs sm:text-sm flex-1">{project.description}</p>
 
