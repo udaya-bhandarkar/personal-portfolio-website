@@ -14,9 +14,9 @@ export default function App() {
       <Navigation />
       <Hero />
       <About />
-      <Skills />
-      <Certifications />
       <Projects />
+      <Certifications />
+      <Skills />
       <Contact />
       <Toaster position="bottom-center" richColors />
     </div>

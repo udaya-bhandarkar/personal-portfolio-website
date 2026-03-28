@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 
 export function Navigation() {
-  const navItems = ["Home", "Skills", "Projects", "Contact Us"];
+  const navItems = ["Home", "Projects", "Skills", "Contact Us"];
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
