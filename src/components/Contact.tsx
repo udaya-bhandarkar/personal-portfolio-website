@@ -45,7 +45,7 @@ export function Contact() {
     <section id="contact-us" className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 relative scroll-mt-20">
       <div className="container mx-auto max-w-6xl">
         <div className="text-center mb-8 sm:mb-12">
-          <h2 className="text-3xl sm:text-4xl text-white mb-3 sm:mb-4">Contact</h2>
+          <h2 className="text-3xl sm:text-4xl text-white mb-3 sm:mb-4">Contact Me</h2>
           <p className="text-gray-400 text-sm sm:text-base">Let's create something amazing together</p>
         </div>
 
