@@ -19,12 +19,23 @@ export function Navigation() {
     const sectionId = item.toLowerCase().replace(' ', '-');
     const section = document.getElementById(sectionId);
     if (section) {
-      const navHeight = 100; // Height buffer to prevent overlap
-      const elementPosition = section.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - navHeight;
+      // Use the navbar's viewport-bottom as the target offset (fixed nav)
+      const nav = document.querySelector('nav');
+      const navBottom = nav ? nav.getBoundingClientRect().bottom : 80;
+      const buffer = 20; // small breathing room below navbar
+
+      // Skip past the section's own top padding so we land at the heading
+      const sectionPaddingTop =
+        parseFloat(getComputedStyle(section).paddingTop) || 0;
+
+      const sectionAbsoluteTop =
+        section.getBoundingClientRect().top + window.scrollY;
+
+      const targetScroll =
+        sectionAbsoluteTop + sectionPaddingTop - navBottom - buffer;
 
       window.scrollTo({
-        top: offsetPosition,
+        top: Math.max(0, targetScroll),
         behavior: 'smooth'
       });
     }
