@@ -3287,6 +3287,7 @@ body {
 .bubble-chart-container {
   position: relative;
   width: 100%;
+  overflow: hidden;
   /* Create a stacking context below the navbar (z-50) so bubbles never overlap it */
   z-index: 1;
   isolation: isolate;
